@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина — Flowers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+
+<!-- ВЕРХНЯЯ ШАПКА -->
+<header class="topbar py-3">
+    <div class="topbar-inner d-flex align-items-center justify-content-between">
+        <button class="topbar-city d-flex align-items-center gap-1" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F2B3F" stroke-width="2">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            <span><u>Санкт-Петербург</u></span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4F2B3F" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+            </svg>
+        </button>
+        <nav class="topbar-nav d-flex">
+            <a href="#" class="topbar-link">Доставка и оплата</a>
+            <a href="#" class="topbar-link">Контакты</a>
+            <a href="#" class="topbar-link">Адреса магазинов</a>
+            <a href="#" class="topbar-link">Помощь</a>
+        </nav>
+        <div class="topbar-contacts text-end">
+            <div class="topbar-phone">+7 (800) 567 90 89</div>
+            <div class="topbar-hours">9:00 – 21:00 (без выходных)</div>
+        </div>
+    </div>
+</header>
+
+<!-- РОЗОВАЯ ШАПКА -->
+<div class="pinkbar">
+    <div class="pinkbar-inner d-flex align-items-center">
+        <a href="index.html" class="pinkbar-logo">
+            <img src="images/logo.svg" alt="flowers" width="150">
+        </a>
+        <button class="pinkbar-catalog" type="button">
+            <svg width="20" height="14" viewBox="0 0 24 18" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+                <line x1="3" y1="3" x2="21" y2="3"/>
+                <line x1="3" y1="9" x2="21" y2="9"/>
+                <line x1="3" y1="15" x2="21" y2="15"/>
+            </svg>
+            Каталог
+        </button>
+        <div class="pinkbar-search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#898F9B" stroke-width="2">
+                <circle cx="11" cy="11" r="7"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" placeholder="Поиск по товарам и магазинам...">
+        </div>
+        <div class="pinkbar-icons d-flex">
+            <a href="#" class="pinkbar-icon" aria-label="Избранное">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F2B3F" stroke-width="1.8">
+                    <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/>
+                </svg>
+                <span class="pinkbar-badge">5</span>
+            </a>
+            <a href="cart.html" class="pinkbar-icon" aria-label="Корзина">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F2B3F" stroke-width="1.8">
+                    <path d="M6 7h12l-1 11a2 2 0 01-2 2H9a2 2 0 01-2-2L6 7z"/>
+                    <path d="M9 7V5a3 3 0 016 0v2"/>
+                </svg>
+                <span class="pinkbar-badge">3</span>
+            </a>
+            <a href="#" class="pinkbar-icon" aria-label="Профиль">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F2B3F" stroke-width="1.8">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ОСНОВНОЙ КОНТЕНТ -->
+<main class="main-cart">
+
+    <!-- Ссылка «Вернуться в каталог» -->
+    <a href="index.html" class="back-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        <span>Вернуться в каталог</span>
+    </a>
+
+    <h1 class="page-title">Корзина <span class="page-title-count">(3)</span></h1>
+
+    <!-- Шапка со «Выбрать всё» и «Очистить корзину» -->
+    <div class="cart-toolbar">
+        <label class="select-all">
+            <input type="checkbox" id="selectAll" checked>
+            <span>Выбрать всё</span>
+        </label>
+        <button class="clear-btn" type="button" id="clearAll"><u>Очистить корзину</u></button>
+    </div>
+
+    <!-- СПИСОК ТОВАРОВ -->
+    <div class="cart-list">
+
+        <div class="cart-row" data-price="1200" data-oldprice="1200">
+            <input type="checkbox" class="cart-row__check" checked>
+            <div class="cart-row__photo">
+                <img src="images/rectangle_52.svg" alt="Букет из 15 тюльпанов">
+            </div>
+            <div class="cart-row__body">
+                <h3 class="cart-row__name">Букет из 15 тюльпанов</h3>
+                <div class="cart-row__qty">
+                    <button class="cart-row__qty-btn" data-action="minus" aria-label="−">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="8" y1="12" x2="16" y2="12"/>
+                        </svg>
+                    </button>
+                    <span class="cart-row__qty-val">1</span>
+                    <button class="cart-row__qty-btn" data-action="plus" aria-label="+">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="16"/>
+                            <line x1="8" y1="12" x2="16" y2="12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="cart-row__actions">
+                <button class="cart-row__act" aria-label="В избранное">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                        <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/>
+                    </svg>
+                </button>
+                <button class="cart-row__act cart-row__remove" aria-label="Удалить">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                        <polyline points="3 6 5 6 21 6"/>
+                        <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/>
+                        <path d="M10 11v6M14 11v6"/>
+                        <path d="M9 6V4a2 2 0 012-2h2a2 2 0 012 2v2"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="cart-row__prices">
+                <span class="cart-row__price-old">1200 ₽</span>
+                <span class="cart-row__price">1200 ₽</span>
+            </div>
+        </div>
+
+        <div class="cart-row" data-price="1300">
+            <input type="checkbox" class="cart-row__check" checked>
+            <div class="cart-row__photo">
+                <img src="images/rectangle_52-1.svg" alt="Букет из 7 пионов">
+            </div>
+            <div class="cart-row__body">
+                <h3 class="cart-row__name">Букет из 7 пионов</h3>
+                <div class="cart-row__qty">
+                    <button class="cart-row__qty-btn" data-action="minus" aria-label="−">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="8" y1="12" x2="16" y2="12"/>
+                        </svg>
+                    </button>
+                    <span class="cart-row__qty-val">1</span>
+                    <button class="cart-row__qty-btn" data-action="plus" aria-label="+">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="16"/>
+                            <line x1="8" y1="12" x2="16" y2="12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="cart-row__actions">
+                <button class="cart-row__act" aria-label="В избранное">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                        <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/>
+                    </svg>
+                </button>
+                <button class="cart-row__act cart-row__remove" aria-label="Удалить">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                        <polyline points="3 6 5 6 21 6"/>
+                        <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/>
+                        <path d="M10 11v6M14 11v6"/>
+                        <path d="M9 6V4a2 2 0 012-2h2a2 2 0 012 2v2"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="cart-row__prices">
+                <span class="cart-row__price">1300 ₽</span>
+            </div>
+        </div>
+
+        <div class="cart-row" data-price="3500" data-oldprice="4000">
+            <input type="checkbox" class="cart-row__check" checked>
+            <div class="cart-row__photo">
+                <img src="images/rectangle_52-2.svg" alt="Букет из 20 пионов">
+            </div>
+            <div class="cart-row__body">
+                <h3 class="cart-row__name">Букет из 20 пионов</h3>
+                <div class="cart-row__qty">
+                    <button class="cart-row__qty-btn" data-action="minus" aria-label="−">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="8" y1="12" x2="16" y2="12"/>
+                        </svg>
+                    </button>
+                    <span class="cart-row__qty-val">1</span>
+                    <button class="cart-row__qty-btn" data-action="plus" aria-label="+">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="16"/>
+                            <line x1="8" y1="12" x2="16" y2="12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="cart-row__actions">
+                <button class="cart-row__act" aria-label="В избранное">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                        <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/>
+                    </svg>
+                </button>
+                <button class="cart-row__act cart-row__remove" aria-label="Удалить">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                        <polyline points="3 6 5 6 21 6"/>
+                        <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/>
+                        <path d="M10 11v6M14 11v6"/>
+                        <path d="M9 6V4a2 2 0 012-2h2a2 2 0 012 2v2"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="cart-row__prices">
+                <span class="cart-row__price-old">4000 ₽</span>
+                <span class="cart-row__price">3500 ₽</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Кнопка «Продолжить оформление» (точно 1360×80, rx=12, fill #4F2B3F) -->
+    <button class="checkout-btn" type="button" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+        Продолжить оформление
+    </button>
+
+    <!-- ДРУГИЕ ТОВАРЫ -->
+    <section class="other">
+        <div class="other__head">
+            <h2 class="other__title">Другие товары</h2>
+            <a href="index.html" class="btn-outline">
+                Перейти в каталог
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </a>
+        </div>
+        <div class="other__list">
+            <a href="product.html" class="mini">
+                <div class="mini__img"><img src="images/img1-2.svg" alt=""></div>
+                <button class="mini__fav" aria-label="В избранное">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/></svg>
+                </button>
+                <h4 class="mini__name">Букет «Любовь»</h4>
+                <div class="mini__price-row">
+                    <span class="mini__price">1800 рублей</span>
+                    <button class="mini__cart" aria-label="В корзину">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M6 7h12l-1 11a2 2 0 01-2 2H9a2 2 0 01-2-2L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+                    </button>
+                </div>
+            </a>
+            <a href="product.html" class="mini">
+                <div class="mini__img"><img src="images/img1-6.svg" alt=""></div>
+                <button class="mini__fav" aria-label="В избранное">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/></svg>
+                </button>
+                <h4 class="mini__name">Гипсофилы</h4>
+                <div class="mini__price-row">
+                    <span class="mini__price">1200 рублей</span>
+                    <button class="mini__cart" aria-label="В корзину">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M6 7h12l-1 11a2 2 0 01-2 2H9a2 2 0 01-2-2L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+                    </button>
+                </div>
+            </a>
+            <a href="product.html" class="mini">
+                <div class="mini__img"><img src="images/img1-7.svg" alt=""></div>
+                <button class="mini__fav" aria-label="В избранное">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/></svg>
+                </button>
+                <h4 class="mini__name">Букет «Хрупкость»</h4>
+                <div class="mini__price-row">
+                    <span class="mini__price">1500 рублей</span>
+                    <button class="mini__cart" aria-label="В корзину">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M6 7h12l-1 11a2 2 0 01-2 2H9a2 2 0 01-2-2L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+                    </button>
+                </div>
+            </a>
+            <a href="product.html" class="mini">
+                <div class="mini__img"><img src="images/img1-13.svg" alt=""></div>
+                <button class="mini__fav" aria-label="В избранное">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/></svg>
+                </button>
+                <h4 class="mini__name">Букет «Страсть»</h4>
+                <div class="mini__price-row">
+                    <span class="mini__price">1200 рублей</span>
+                    <button class="mini__cart" aria-label="В корзину">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M6 7h12l-1 11a2 2 0 01-2 2H9a2 2 0 01-2-2L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+                    </button>
+                </div>
+            </a>
+            <a href="product.html" class="mini">
+                <div class="mini__img"><img src="images/img1-8.svg" alt=""></div>
+                <button class="mini__fav" aria-label="В избранное">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/></svg>
+                </button>
+                <h4 class="mini__name">Букет «Вдохновение»</h4>
+                <div class="mini__price-row">
+                    <span class="mini__price">1400 ₽</span>
+                    <button class="mini__cart" aria-label="В корзину">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M6 7h12l-1 11a2 2 0 01-2 2H9a2 2 0 01-2-2L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+                    </button>
+                </div>
+            </a>
+        </div>
+    </section>
+</main>
+
+<!-- МОДАЛЬНОЕ ОКНО ОФОРМЛЕНИЯ ЗАКАЗА (Bootstrap modal) -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content checkout-modal">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">Оформление заказа</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="orderForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Имя *</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Телефон *</label>
+                            <input type="tel" class="form-control" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Адрес доставки *</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Дата</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Время</label>
+                            <select class="form-select">
+                                <option>9:00 – 12:00</option>
+                                <option>12:00 – 15:00</option>
+                                <option selected>15:00 – 18:00</option>
+                                <option>18:00 – 21:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="checkout-btn w-100 mt-4">Подтвердить заказ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ПОДВАЛ -->
+<footer class="footer">
+    <div class="footer-inner d-flex">
+        <a href="index.html" class="footer-logo">
+            <img src="images/logo.svg" alt="flowers" width="110">
+        </a>
+        <div class="footer-col">
+            <h4 class="footer-title">О НАС</h4>
+            <a href="#" class="footer-link">О компании</a>
+            <a href="#" class="footer-link">Отзывы</a>
+            <a href="#" class="footer-link">Адреса магазинов</a>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">ДОКУМЕНТЫ</h4>
+            <a href="#" class="footer-link">Публичная оферта</a>
+            <a href="#" class="footer-link">Политика конфиденциальности</a>
+            <a href="#" class="footer-link">Оферта для партнеров</a>
+        </div>
+        <div class="footer-col">
+            <h4 class="footer-title">КЛИЕНТАМ</h4>
+            <a href="#" class="footer-link">Помощь</a>
+            <a href="#" class="footer-link">Узнать статус заказа</a>
+            <a href="#" class="footer-link">Бонусная программа</a>
+            <a href="#" class="footer-link">Доставка и оплата</a>
+            <a href="#" class="footer-link">Гарантии</a>
+            <a href="#" class="footer-link">Правила возврата</a>
+        </div>
+        <div class="footer-col footer-col-contacts text-end">
+            <h4 class="footer-title">Контакты</h4>
+            <div class="footer-phone">+7 (800) 567 90 89</div>
+            <div class="footer-hours">9:00 – 21:00 (без выходных)</div>
+        </div>
+    </div>
+    <div class="footer-policy">Политика в отношении обработки персональных данных</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/cart.js"></script>
+</body>
+</html>

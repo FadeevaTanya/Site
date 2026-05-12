@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Букет из 15 тюльпанов — Flowers</title>
+    <link rel="stylesheet" href="css/product.css">
+</head>
+<body>
+
+<!-- ВЕРХНЯЯ ШАПКА -->
+<header class="topbar">
+    <div class="topbar__inner">
+        <button class="topbar__city" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4F2B3F" stroke-width="2">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            <span><u>Санкт-Петербург</u></span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4F2B3F" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+            </svg>
+        </button>
+        <nav class="topbar__nav">
+            <a href="#" class="topbar__link">Доставка и оплата</a>
+            <a href="#" class="topbar__link">Контакты</a>
+            <a href="#" class="topbar__link">Адреса магазинов</a>
+            <a href="#" class="topbar__link">Помощь</a>
+        </nav>
+        <div class="topbar__contacts">
+            <div class="topbar__phone">+7 (800) 567 90 89</div>
+            <div class="topbar__hours">9:00 – 21:00 (без выходных)</div>
+        </div>
+    </div>
+</header>
+
+<!-- РОЗОВАЯ ШАПКА -->
+<div class="pinkbar">
+    <div class="pinkbar__inner">
+        <a href="index.html" class="pinkbar__logo">
+            <img src="images/logo.svg" alt="flowers" width="150">
+        </a>
+        <button class="pinkbar__catalog" type="button">
+            <svg width="20" height="14" viewBox="0 0 24 18" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+                <line x1="3" y1="3" x2="21" y2="3"/>
+                <line x1="3" y1="9" x2="21" y2="9"/>
+                <line x1="3" y1="15" x2="21" y2="15"/>
+            </svg>
+            Каталог
+        </button>
+        <div class="pinkbar__search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#898F9B" stroke-width="2">
+                <circle cx="11" cy="11" r="7"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" placeholder="Поиск по товарам и магазинам...">
+        </div>
+        <div class="pinkbar__icons">
+            <a href="#" class="pinkbar__icon" aria-label="Избранное">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F2B3F" stroke-width="1.8">
+                    <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/>
+                </svg>
+                <span class="pinkbar__badge">5</span>
+            </a>
+            <a href="cart.html" class="pinkbar__icon" aria-label="Корзина">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F2B3F" stroke-width="1.8">
+                    <path d="M6 7h12l-1 11a2 2 0 01-2 2H9a2 2 0 01-2-2L6 7z"/>
+                    <path d="M9 7V5a3 3 0 016 0v2"/>
+                </svg>
+                <span class="pinkbar__badge">3</span>
+            </a>
+            <a href="#" class="pinkbar__icon" aria-label="Профиль">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F2B3F" stroke-width="1.8">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ОСНОВНОЙ КОНТЕНТ -->
+<main class="main">
+
+    <!-- Хлебные крошки -->
+    <nav class="crumbs">
+        <a href="index.html" class="crumbs__link">Каталог</a>
+        <svg class="crumbs__sep" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#898F9B" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="index.html" class="crumbs__link">Все товары</a>
+        <svg class="crumbs__sep" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#898F9B" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="#" class="crumbs__link">Тюльпаны</a>
+        <svg class="crumbs__sep" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#898F9B" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <span class="crumbs__current">Букет из 15 тюльпанов</span>
+    </nav>
+
+    <!-- ОСНОВНАЯ FLEX СЕКЦИЯ: галерея + инфо -->
+    <section class="product-top">
+
+        <!-- ГАЛЕРЕЯ -->
+        <div class="gallery">
+            <div class="gallery__main">
+                <img src="images/rectangle_52.svg" alt="Букет из 15 тюльпанов" id="mainImg">
+                <button class="gallery__fav" aria-label="В избранное">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                        <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="gallery__thumbs">
+                <div class="gallery__thumb" data-src="images/rectangle_65.svg">
+                    <img src="images/rectangle_65.svg" alt="">
+                </div>
+                <div class="gallery__thumb" data-src="images/rectangle_52-3.svg">
+                    <img src="images/rectangle_52-3.svg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!-- ИНФО О ТОВАРЕ -->
+        <div class="info">
+            <h1 class="info__title">Букет из 15 тюльпанов</h1>
+            <div class="info__size">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666D80" stroke-width="2">
+                    <polyline points="3 6 7 6 7 18 3 18"/>
+                    <polyline points="17 6 21 6 21 18 17 18"/>
+                    <line x1="7" y1="12" x2="17" y2="12"/>
+                </svg>
+                <span>Размеры 30 на 45 см</span>
+            </div>
+
+            <div class="info__compose">
+                <h3 class="info__compose-title">Состав:</h3>
+                <ul class="info__compose-list">
+                    <li>Тюльпаны - 10 шт</li>
+                    <li>Крафтовая упаковка - 1 шт</li>
+                    <li>Лента - 1 шт</li>
+                </ul>
+            </div>
+
+            <div class="info__price-row">
+                <span class="info__price">1200 рублей</span>
+                <div class="info__qty">
+                    <button class="info__qty-btn" data-action="minus" aria-label="−">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="8" y1="12" x2="16" y2="12"/>
+                        </svg>
+                    </button>
+                    <span class="info__qty-val">1</span>
+                    <button class="info__qty-btn" data-action="plus" aria-label="+">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="16"/>
+                            <line x1="8" y1="12" x2="16" y2="12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="info__buttons">
+                <a href="cart.html" class="btn btn--primary">Добавить в корзину</a>
+                <a href="cart.html" class="btn btn--secondary">Купить сейчас</a>
+            </div>
+
+            <div class="info__meta">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                    <path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/>
+                </svg>
+                <span>312 человек добавили товар в свои подборки</span>
+            </div>
+            <div class="info__meta">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+                <span>Получите 60 бонусов</span>
+            </div>
+
+            <div class="tabs">
+                <button class="tabs__btn tabs__btn--active" data-tab="delivery">Доставка</button>
+                <button class="tabs__btn" data-tab="return">Правила возврата</button>
+            </div>
+            <div class="tabs__body">
+                <div class="tabs__pane tabs__pane--active" id="delivery">
+                    <p>Ближайшая доставка завтра 08.12.2023 с 07:30 в течение 1 час.</p>
+                    <p>Доставка по г. Санкт-Петербург – Бесплатно</p>
+                    <p class="tabs__note">* Стоимость доставки в отдаленные районы или за пределы города уточняйте у оператора.</p>
+                </div>
+                <div class="tabs__pane" id="return">
+                    <p>Возврат товара в течение 14 дней при сохранении товарного вида.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК ОТЗЫВОВ -->
+    <section class="reviews">
+        <div class="reviews__head">
+            <h2 class="reviews__title">Отзывы</h2>
+            <button class="btn-outline">
+                Увидеть больше
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </div>
+
+        <div class="reviews__list">
+            <article class="review">
+                <header class="review__head">
+                    <div class="review__avatar">И</div>
+                    <span class="review__name">Иванов Иван</span>
+                </header>
+                <ul class="review__rates">
+                    <li>Доставка <span class="review__stars">★ <b>4/5</b></span></li>
+                    <li>Сервис <span class="review__stars">★ <b>5/5</b></span></li>
+                    <li>Цена/качество <span class="review__stars">★ <b>3/5</b></span></li>
+                    <li>Соответствие <span class="review__stars">★ <b>5/5</b></span></li>
+                </ul>
+                <p class="review__text">Доставили в выбранный промежуток времени, цветы свежие, рекомендую</p>
+                <img src="images/unsplash_MI_sZJB6I3k.svg" class="review__photo" alt="">
+            </article>
+
+            <article class="review">
+                <header class="review__head">
+                    <div class="review__avatar">П</div>
+                    <span class="review__name">Петров Петр</span>
+                </header>
+                <ul class="review__rates">
+                    <li>Доставка <span class="review__stars">★ <b>3/5</b></span></li>
+                    <li>Сервис <span class="review__stars">★ <b>2/5</b></span></li>
+                    <li>Цена/качество <span class="review__stars">★ <b>3/5</b></span></li>
+                    <li>Соответствие <span class="review__stars">★ <b>5/5</b></span></li>
+                </ul>
+                <p class="review__text">Доставили в выбранный промежуток времени, цветы свежие, рекомендую</p>
+                <img src="images/rectangle_65.svg" class="review__photo" alt="">
+            </article>
+
+            <article class="review">
+                <header class="review__head">
+                    <div class="review__avatar">Ж</div>
+                    <span class="review__name">Жилин Дмитрий</span>
+                </header>
+                <ul class="review__rates">
+                    <li>Доставка <span class="review__stars">★ <b>4/5</b></span></li>
+                    <li>Сервис <span class="review__stars">★ <b>5/5</b></span></li>
+                    <li>Цена/качество <span class="review__stars">★ <b>3/5</b></span></li>
+                    <li>Соответствие <span class="review__stars">★ <b>5/5</b></span></li>
+                </ul>
+                <p class="review__text">Доставили в выбранный промежуток времени, цветы свежие, рекомендую</p>
+                <img src="images/rectangle_52-3.svg" class="review__photo" alt="">
+            </article>
+
+            <article class="review">
+                <header class="review__head">
+                    <div class="review__avatar">М</div>
+                    <span class="review__name">Максим</span>
+                </header>
+                <ul class="review__rates">
+                    <li>Доставка <span class="review__stars">★ <b>4/5</b></span></li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- ДРУГИЕ ТОВАРЫ -->
+    <section class="other">
+        <div class="other__head">
+            <h2 class="other__title">Другие товары</h2>
+            <a href="index.html" class="btn-outline">
+                Перейти в каталог
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+        </div>
+
+        <div class="other__list">
+            <a href="product.html" class="mini">
+                <div class="mini__img"><img src="images/img1-2.svg" alt=""></div>
+                <button class="mini__fav" aria-label="В избранное">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/></svg>
+                </button>
+                <h4 class="mini__name">Букет «Любовь»</h4>
+                <div class="mini__price-row">
+                    <span class="mini__price">1800 рублей</span>
+                    <button class="mini__cart" aria-label="В корзину">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M6 7h12l-1 11a2 2 0 01-2 2H9a2 2 0 01-2-2L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+                    </button>
+                </div>
+            </a>
+
+            <a href="product.html" class="mini">
+                <div class="mini__img"><img src="images/img1-6.svg" alt=""></div>
+                <button class="mini__fav" aria-label="В избранное">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/></svg>
+                </button>
+                <h4 class="mini__name">Гипсофилы</h4>
+                <div class="mini__price-row">
+                    <span class="mini__price">1200 рублей</span>
+                    <button class="mini__cart" aria-label="В корзину">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M6 7h12l-1 11a2 2 0 01-2 2H9a2 2 0 01-2-2L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+                    </button>
+                </div>
+            </a>
+
+            <a href="product.html" class="mini">
+                <div class="mini__img"><img src="images/img1-7.svg" alt=""></div>
+                <button class="mini__fav" aria-label="В избранное">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/></svg>
+                </button>
+                <h4 class="mini__name">Букет «Хрупкость»</h4>
+                <div class="mini__price-row">
+                    <span class="mini__price">1500 рублей</span>
+                    <button class="mini__cart" aria-label="В корзину">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M6 7h12l-1 11a2 2 0 01-2 2H9a2 2 0 01-2-2L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+                    </button>
+                </div>
+            </a>
+
+            <a href="product.html" class="mini">
+                <div class="mini__img"><img src="images/img1-13.svg" alt=""></div>
+                <button class="mini__fav" aria-label="В избранное">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/></svg>
+                </button>
+                <h4 class="mini__name">Букет «Страсть»</h4>
+                <div class="mini__price-row">
+                    <span class="mini__price">1200 рублей</span>
+                    <button class="mini__cart" aria-label="В корзину">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M6 7h12l-1 11a2 2 0 01-2 2H9a2 2 0 01-2-2L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+                    </button>
+                </div>
+            </a>
+
+            <a href="product.html" class="mini">
+                <div class="mini__img"><img src="images/img1-8.svg" alt=""></div>
+                <button class="mini__fav" aria-label="В избранное">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6 5c2 0 3.5 1 6 4 2.5-3 4-4 6-4 3.5 0 5 4 3.5 7-2.5 4.5-9.5 9-9.5 9z"/></svg>
+                </button>
+                <h4 class="mini__name">Букет «Вдохновение»</h4>
+                <div class="mini__price-row">
+                    <span class="mini__price">1400 ₽</span>
+                    <button class="mini__cart" aria-label="В корзину">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A2B2E" stroke-width="1.8"><path d="M6 7h12l-1 11a2 2 0 01-2 2H9a2 2 0 01-2-2L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+                    </button>
+                </div>
+            </a>
+        </div>
+    </section>
+</main>
+
+<!-- ПОДВАЛ -->
+<footer class="footer">
+    <div class="footer__inner">
+        <a href="index.html" class="footer__logo">
+            <img src="images/logo.svg" alt="flowers" width="110">
+        </a>
+        <div class="footer__col">
+            <h4 class="footer__title">О НАС</h4>
+            <a href="#" class="footer__link">О компании</a>
+            <a href="#" class="footer__link">Отзывы</a>
+            <a href="#" class="footer__link">Адреса магазинов</a>
+        </div>
+        <div class="footer__col">
+            <h4 class="footer__title">ДОКУМЕНТЫ</h4>
+            <a href="#" class="footer__link">Публичная оферта</a>
+            <a href="#" class="footer__link">Политика конфиденциальности</a>
+            <a href="#" class="footer__link">Оферта для партнеров</a>
+        </div>
+        <div class="footer__col">
+            <h4 class="footer__title">КЛИЕНТАМ</h4>
+            <a href="#" class="footer__link">Помощь</a>
+            <a href="#" class="footer__link">Узнать статус заказа</a>
+            <a href="#" class="footer__link">Бонусная программа</a>
+            <a href="#" class="footer__link">Доставка и оплата</a>
+            <a href="#" class="footer__link">Гарантии</a>
+            <a href="#" class="footer__link">Правила возврата</a>
+        </div>
+        <div class="footer__col footer__col--contacts">
+            <h4 class="footer__title">Контакты</h4>
+            <div class="footer__phone">+7 (800) 567 90 89</div>
+            <div class="footer__hours">9:00 – 21:00 (без выходных)</div>
+        </div>
+    </div>
+    <div class="footer__policy">Политика в отношении обработки персональных данных</div>
+</footer>
+
+<script src="js/gallery.js"></script>
+</body>
+</html>
