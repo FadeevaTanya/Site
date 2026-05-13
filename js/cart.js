@@ -1,5 +1,5 @@
 /* =========================================================================
-   cart.js — Логика корзины
+   cart.js — Логика корзины (без модального окна)
    ========================================================================= */
 (function () {
     'use strict';
@@ -22,12 +22,12 @@
 
         if (rows.length === 0) {
             const list = document.querySelector('.cart-list');
-            const btn = document.querySelector('.checkout-btn[data-bs-toggle]');
+            const btn = document.querySelector('.checkout-btn');
             if (list) {
                 list.innerHTML = `
-                    <div style="text-align:center;padding:60px 20px;color:var(--gray);">
-                        <p style="font-size:20px;color:var(--accent);">Корзина пуста</p>
-                        <a href="index.html" style="color:var(--accent);text-decoration:underline;">Вернуться в каталог</a>
+                    <div style="text-align:center;padding:60px 20px;">
+                        <p style="font-size:20px;color:#4F2B3F;margin-bottom:16px;">Корзина пуста</p>
+                        <a href="index.html" style="color:#4F2B3F;text-decoration:underline;">Вернуться в каталог</a>
                     </div>`;
             }
             if (btn) btn.style.display = 'none';
@@ -78,20 +78,11 @@
         });
     }
 
-    /* Форма оформления */
-    const orderForm = document.getElementById('orderForm');
-    if (orderForm) {
-        orderForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const body = orderForm.closest('.modal-body');
-            if (body) {
-                body.innerHTML = `
-                    <div style="text-align:center;padding:30px 20px;">
-                        <div style="font-size:48px;color:#5fa86b;">✓</div>
-                        <h4 style="color:var(--accent);margin-top:16px;">Спасибо за заказ!</h4>
-                        <p style="color:var(--gray);">Мы свяжемся с вами в ближайшее время.</p>
-                    </div>`;
-            }
+    /* «Продолжить оформление» — без модального окна */
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 

@@ -1,13 +1,7 @@
 /* ========================================================================
    FloraLine — index.html (Каталог) — CSS Grid
    Pixel-perfect по макету Figma (1920×4880)
-   Точные координаты из SVG:
-   • Контент: x=280 до x=1640 (1360px)
-   • Розовый цвет: #FEECF1
-   • Тёмный акцент: #4F2B3F
-   • Текст: #2A2B2E, серый: #666D80, светлее: #898F9B
-   • Карточка: 320×320, rx=16
-   • Сетка: 3 кол × 5 рядов, шаг 368 (gap 48)
+   Шрифты: Prompt (текст), Nunito (заголовки)
    ======================================================================== */
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,14 +14,17 @@
     --gray: #666D80;
     --gray-light: #898F9B;
     --border: #C2C5C9;
+    --font-text: 'Prompt', 'Helvetica Neue', Arial, sans-serif;
+    --font-head: 'Nunito', 'Prompt', sans-serif;
 }
 
 body {
-    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-text);
     color: var(--text);
     background: var(--bg);
     font-size: 16px;
     line-height: 1.4;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -36,6 +33,16 @@ a { color: inherit; text-decoration: none; }
 button { cursor: pointer; font-family: inherit; border: none; background: none; }
 ul { list-style: none; }
 input { font-family: inherit; }
+
+h1, h2, h3, h4 { font-family: var(--font-head); }
+
+/* Размеры иконок */
+.ico-12 { width: 12px; height: 12px; }
+.ico-16 { width: 16px; height: 16px; }
+.ico-20 { width: 20px; height: 20px; }
+.ico-22 { width: 22px; height: 22px; }
+.ico-24 { width: 24px; height: 24px; }
+.ico-32 { width: 32px; height: 32px; }
 
 /* ============ ВЕРХНЯЯ ШАПКА (белая, 104px) ============ */
 .topbar {
@@ -57,7 +64,7 @@ input { font-family: inherit; }
     grid-auto-flow: column;
     align-items: center;
     gap: 6px;
-    color: var(--accent);
+    color: var(--text);
     font-size: 14px;
 }
 .topbar__city u { text-decoration: underline; }
@@ -86,6 +93,7 @@ input { font-family: inherit; }
 }
 
 /* ============ РОЗОВАЯ ШАПКА (100px) ============ */
+/* Структура: лого (слева) | центр (catalog+search) | иконки (справа) */
 .pinkbar {
     height: 100px;
     background: var(--pink);
@@ -96,16 +104,25 @@ input { font-family: inherit; }
     padding: 0 40px;
     height: 100%;
     display: grid;
-    grid-template-columns: auto auto 1fr auto;
+    grid-template-columns: 1fr auto 1fr;  /* лого занимает 1fr, центр - auto, иконки - 1fr */
     align-items: center;
     gap: 24px;
 }
+.pinkbar__logo {
+    display: block;
+    justify-self: start;
+}
+.pinkbar__logo img { height: 60px; width: auto; }
 
-/* Логотип f🌸wers */
-.pinkbar__logo { display: block; }
-.pinkbar__logo img { height: 56px; width: auto; }
+/* Центр - кнопка + поиск вместе по центру */
+.pinkbar__center {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 16px;
+    justify-self: center;
+}
 
-/* Кнопка «Каталог» (точно 141×48, rx=12) */
 .pinkbar__catalog {
     width: 141px;
     height: 48px;
@@ -113,18 +130,18 @@ input { font-family: inherit; }
     color: white;
     border-radius: 12px;
     font-size: 16px;
-    font-weight: 400;
+    font-family: var(--font-text);
     display: grid;
     grid-template-columns: auto auto;
     align-items: center;
     justify-content: center;
     gap: 12px;
-    margin-left: 142px;  /* отступ от логотипа до кнопки (638 - 280 - 216 = 142) */
     transition: opacity .15s;
 }
-.pinkbar__catalog:hover { opacity: 0.9; }
+.pinkbar__catalog:hover { opacity: 0.92; }
+.burger { display: grid; gap: 3px; width: 18px; }
+.burger span { display: block; height: 2px; background: white; border-radius: 2px; }
 
-/* Поиск (точно 480×48, rx=12, обводка #C2C5C9) */
 .pinkbar__search {
     width: 480px;
     height: 48px;
@@ -136,7 +153,6 @@ input { font-family: inherit; }
     align-items: center;
     gap: 8px;
     padding: 0 16px;
-    margin-left: 24px;
 }
 .pinkbar__search input {
     border: none;
@@ -146,19 +162,18 @@ input { font-family: inherit; }
     background: transparent;
     height: 100%;
     width: 100%;
+    font-family: var(--font-text);
 }
 .pinkbar__search input::placeholder { color: var(--gray-light); }
 
-/* Иконки справа */
 .pinkbar__icons {
     display: grid;
     grid-auto-flow: column;
-    gap: 20px;
+    gap: 24px;
     align-items: center;
+    justify-self: end;
 }
 .pinkbar__icon {
-    width: 32px;
-    height: 32px;
     display: grid;
     place-items: center;
     color: var(--accent);
@@ -196,21 +211,16 @@ input { font-family: inherit; }
     gap: 8px;
     padding-top: 36px;
 }
-.crumbs__link {
-    font-size: 16px;
-    color: var(--gray-light);
-}
-.crumbs__current {
-    font-size: 16px;
-    color: var(--text);
-    font-weight: 600;
-}
+.crumbs__link { font-size: 16px; color: var(--gray-light); }
+.crumbs__current { font-size: 16px; color: var(--text); font-weight: 500; }
+.crumbs__sep { opacity: 0.6; }
 
-/* Заголовок страницы (точно по макету: ~72px) */
+/* Заголовок страницы (~72px) — Nunito */
 .page-title {
+    font-family: var(--font-head);
     font-size: 72px;
     line-height: 1.05;
-    font-weight: 500;
+    font-weight: 600;
     margin: 24px 0 60px;
     color: var(--text);
     letter-spacing: -1.5px;
@@ -224,7 +234,7 @@ input { font-family: inherit; }
     align-items: start;
 }
 
-/* ----- ФИЛЬТР (левая колонка) ----- */
+/* ----- ФИЛЬТР ----- */
 .filter { display: grid; gap: 32px; }
 .filter__head {
     font-size: 18px;
@@ -292,7 +302,7 @@ input { font-family: inherit; }
     outline: none;
 }
 
-/* Чекбоксы (точно 23×23 rx=6, шаг 36px) */
+/* Чекбоксы */
 .filter__option {
     display: grid;
     grid-template-columns: 24px 1fr;
@@ -302,35 +312,24 @@ input { font-family: inherit; }
     font-size: 15px;
     color: var(--text);
     min-height: 24px;
+    user-select: none;
 }
 .filter__option input[type="checkbox"] {
     appearance: none;
     width: 24px;
     height: 24px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    background: var(--bg);
+    background-image: url("../images/icons/check-unchecked.svg");
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
     cursor: pointer;
     margin: 0;
-    position: relative;
+    border: none;
 }
 .filter__option input[type="checkbox"]:checked {
-    background: var(--accent);
-    border-color: var(--accent);
-}
-.filter__option input[type="checkbox"]:checked::after {
-    content: '';
-    position: absolute;
-    left: 7px;
-    top: 3px;
-    width: 6px;
-    height: 11px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
+    background-image: url("../images/icons/check-checked.svg");
 }
 
-/* Цветовые кружки */
 .filter__colors {
     display: grid;
     grid-auto-flow: column;
@@ -350,6 +349,7 @@ input { font-family: inherit; }
     text-align: left;
     padding: 0;
     margin-top: 8px;
+    font-family: var(--font-text);
 }
 .filter__reset u { text-decoration: underline; }
 
@@ -357,6 +357,7 @@ input { font-family: inherit; }
 .catalog__right {
     display: grid;
     gap: 32px;
+    min-width: 0;
 }
 
 /* Панель сортировки */
@@ -377,8 +378,8 @@ input { font-family: inherit; }
 }
 .sort__link u { text-decoration: underline; }
 .view-toggle {
-    width: 112px;
-    height: 48px;
+    width: 100px;
+    height: 44px;
     border: 1px solid var(--border);
     border-radius: 8px;
     display: grid;
@@ -387,50 +388,63 @@ input { font-family: inherit; }
 .view-toggle__btn {
     display: grid;
     place-items: center;
-    color: var(--gray-light);
-    transition: color .15s;
+    opacity: 0.4;
+    transition: opacity .15s;
 }
-.view-toggle__btn--active { color: var(--accent); }
+.view-toggle__btn--active { opacity: 1; }
 
-/* Сетка товаров (точно 3 колонки, gap 48) */
+/* Сетка товаров (3 колонки, gap 48) */
 .products {
     display: grid;
-    grid-template-columns: repeat(3, 320px);
+    grid-template-columns: repeat(3, 1fr);
     column-gap: 48px;
     row-gap: 48px;
-    justify-content: start;
 }
 
-/* Карточка товара (точно по макету) */
+/* Карточка товара */
 .product {
     display: grid;
-    grid-template-rows: 320px auto auto;
+    grid-template-rows: auto auto auto;
     gap: 12px;
+    position: relative;
 }
 .product__img-wrap {
     position: relative;
-    width: 320px;
-    height: 320px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+.product__img-wrap a {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 .product__img {
-    width: 320px;
-    height: 320px;
+    width: 100%;
+    height: 100%;
     border-radius: 16px;
     object-fit: cover;
 }
+/* Кнопка-сердечко - ОБЯЗАТЕЛЬНО видна поверх картинки */
 .product__fav {
     position: absolute;
     top: 16px;
     right: 16px;
     width: 36px;
     height: 36px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
     border-radius: 50%;
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: background .15s;
+    z-index: 10;
+    border: none;
+    cursor: pointer;
 }
 .product__fav:hover { background: white; }
+.product__fav.is-active img {
+    filter: brightness(0) saturate(100%) invert(20%) sepia(11%) saturate(2700%) hue-rotate(290deg) brightness(95%) contrast(85%);
+}
 
 .product__name {
     font-size: 16px;
@@ -456,33 +470,53 @@ input { font-family: inherit; }
     text-decoration: line-through;
 }
 .product__cart {
-    width: 32px;
-    height: 32px;
     display: grid;
     place-items: center;
     color: var(--text);
 }
 
-/* Кнопка «Показать ещё» (точно 1056×80, rx=15) */
+/* Кнопка «Показать ещё» (на всю ширину правой колонки) */
 .show-more {
-    width: 1056px;
-    max-width: 100%;
+    width: 100%;
     height: 80px;
     background: var(--accent);
     color: white;
     border-radius: 15px;
     font-size: 18px;
     font-weight: 500;
-    justify-self: center;
+    font-family: var(--font-text);
     transition: opacity .15s;
 }
 .show-more:hover { opacity: 0.92; }
 
-/* Промокод (161×48, rx=10, с «вырезами») */
-.promo-wrap {
-    display: grid;
-    place-items: start;
-    padding: 80px 0;
+/* ============ РОЗОВЫЙ БАННЕР СО СКИДКОЙ ============ */
+.promo-banner {
+    margin-top: 80px;
+    height: 280px;
+    border-radius: 20px;
+    background-image: url('../images/rectangle_72.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+}
+.promo-banner__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    z-index: 2;
+}
+.promo-banner__title {
+    font-family: var(--font-head);
+    font-size: 42px;
+    font-weight: 500;
+    color: white;
+    line-height: 1.2;
 }
 .promo-coupon {
     position: relative;
@@ -491,13 +525,14 @@ input { font-family: inherit; }
     height: 48px;
     border-radius: 10px;
     padding: 0 36px;
-    display: grid;
+    display: inline-flex;
     align-items: center;
-    margin-left: 200px;  /* центрируем под сеткой товаров */
+    width: fit-content;
 }
 .promo-coupon__text {
     font-size: 16px;
     font-weight: 500;
+    color: var(--text);
 }
 .promo-coupon__notch {
     position: absolute;
@@ -505,7 +540,7 @@ input { font-family: inherit; }
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
-    background: white;
+    background: var(--accent);
     border-radius: 50%;
 }
 .promo-coupon__notch--left { left: -8px; }
@@ -513,19 +548,49 @@ input { font-family: inherit; }
 
 /* ============ FAQ ============ */
 .faq {
-    padding: 60px 0 80px;
+    padding: 80px 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: start;
 }
+.faq__left {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
 .faq__title {
+    font-family: var(--font-head);
     font-size: 48px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.1;
     color: var(--text);
     letter-spacing: -0.5px;
 }
+/* Коллаж как в макете: 3 колонки × 2 ряда, 5 фотографий
+   Кол 1: маленькое (сверху) + высокое (снизу)
+   Кол 2-3: широкое сверху (растянутое на 2 кол), 2 квадратных снизу */
+.faq__collage {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+    max-width: 580px;
+    aspect-ratio: 1 / 0.85;
+}
+.faq__collage-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.faq__collage-img--1 { grid-row: 1; grid-column: 1; }            /* пионы (маленькое слева сверху) */
+.faq__collage-img--2 { grid-row: 1; grid-column: 2 / 4; }        /* тюльпаны (широкое сверху) */
+.faq__collage-img--3 { grid-row: 2; grid-column: 1; }            /* оранжевые (слева снизу) */
+.faq__collage-img--4 { grid-row: 2; grid-column: 2; }            /* гидрангея (середина снизу) */
+.faq__collage-img--5 { grid-row: 2; grid-column: 3; }            /* тюльпаны жёлтые (справа снизу) */
+
 .faq__list { display: grid; gap: 16px; }
 .faq__item {
     background: var(--pink);
@@ -534,36 +599,31 @@ input { font-family: inherit; }
 }
 .faq__head {
     width: 100%;
-    padding: 16px 24px;
+    padding: 14px 24px;
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
     gap: 12px;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--text);
     text-align: left;
+    font-family: var(--font-text);
 }
-.faq__item--open .faq__body {
+.faq__chevron { transition: transform .2s; }
+.faq__item--open .faq__chevron { transform: rotate(180deg); }
+.faq__body {
     padding: 0 24px 16px;
-    background: white;
-    border: 1px solid var(--pink);
-    border-top: none;
-    border-radius: 0 0 12px 12px;
     font-size: 14px;
     line-height: 1.5;
     color: var(--text);
-    margin-top: 12px;
-    padding-top: 16px;
 }
-.faq__item--open .faq__head svg { transform: rotate(180deg); }
 .faq__item:not(.faq__item--open) .faq__body { display: none; }
 
 /* ============ ПОДВАЛ ============ */
 .footer {
     background: var(--pink);
     padding: 60px 0 24px;
-    margin-top: 40px;
 }
 .footer__inner {
     max-width: 1640px;
@@ -571,39 +631,30 @@ input { font-family: inherit; }
     padding: 0 40px;
     display: grid;
     grid-template-columns: auto 1fr 1.2fr 1fr auto;
-    gap: 60px;
+    gap: 80px;
     align-items: start;
 }
-.footer__logo { display: block; }
-.footer__logo img { height: 42px; width: auto; }
-.footer__col { display: grid; gap: 12px; }
+.footer__logo img { height: 60px; width: auto; }
+.footer__col { display: grid; gap: 16px; align-content: start; }
 .footer__title {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text);
     margin-bottom: 4px;
     letter-spacing: 0.5px;
 }
 .footer__link {
-    font-size: 14px;
+    font-size: 16px;
     color: var(--text);
     transition: color .15s;
 }
 .footer__link:hover { color: var(--accent); }
 .footer__col--contacts { text-align: right; }
-.footer__phone {
-    font-size: 14px;
-    color: var(--text);
-    font-weight: 500;
-}
-.footer__hours {
-    font-size: 13px;
-    color: var(--gray);
-    margin-top: 4px;
-}
+.footer__phone { font-size: 16px; color: var(--text); font-weight: 400; }
+.footer__hours { font-size: 16px; color: var(--text); margin-top: 8px; }
 .footer__policy {
     max-width: 1640px;
-    margin: 40px auto 0;
+    margin: 30px auto 0;
     padding: 0 40px;
     font-size: 11px;
     color: var(--gray-light);
@@ -611,47 +662,37 @@ input { font-family: inherit; }
 
 /* ============ АДАПТИВ ============ */
 @media (max-width: 1280px) {
-    .products {
-        grid-template-columns: repeat(3, 1fr);
-        column-gap: 24px;
-    }
-    .product__img-wrap, .product__img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1 / 1;
-    }
-    .product { grid-template-rows: auto auto auto; }
-    .show-more { width: 100%; }
+    .pinkbar__inner { grid-template-columns: auto 1fr auto; }
+    .pinkbar__center { gap: 12px; }
+    .pinkbar__search { width: 320px; }
+    .products { column-gap: 24px; }
 }
-
 @media (max-width: 1024px) {
-    .topbar__inner, .pinkbar__inner {
-        gap: 20px;
-        padding: 0 24px;
-    }
+    .topbar__inner, .pinkbar__inner { gap: 20px; padding: 0 24px; }
     .topbar__nav { gap: 24px; }
-    .pinkbar__catalog { margin-left: 0; }
-    .pinkbar__search { width: 100%; margin-left: 0; }
+    .pinkbar__inner { grid-template-columns: auto 1fr auto; }
+    .pinkbar__center { flex-wrap: wrap; }
+    .pinkbar__search { width: 100%; }
     .main { padding: 0 24px; }
     .page-title { font-size: 48px; }
     .catalog { grid-template-columns: 200px 1fr; gap: 40px; }
     .faq { grid-template-columns: 1fr; gap: 32px; }
     .faq__title { font-size: 36px; }
+    .promo-banner { padding: 0 40px; }
+    .promo-banner__title { font-size: 32px; }
     .footer__inner { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
-
 @media (max-width: 768px) {
     .topbar { display: none; }
-    .pinkbar__inner { grid-template-columns: auto auto 1fr; }
+    .pinkbar__center { display: flex; flex-direction: column; }
     .pinkbar__search { display: none; }
     .catalog { grid-template-columns: 1fr; }
     .products { grid-template-columns: repeat(2, 1fr); }
     .page-title { font-size: 36px; }
-    .promo-coupon { margin-left: 0; }
+    .promo-banner { height: auto; padding: 40px 24px; }
     .footer__inner { grid-template-columns: 1fr; }
     .footer__col--contacts { text-align: left; }
 }
-
 @media (max-width: 480px) {
     .products { grid-template-columns: 1fr; }
 }

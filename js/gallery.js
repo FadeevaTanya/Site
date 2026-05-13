@@ -1,25 +1,22 @@
 /* =========================================================================
    gallery.js — Галерея товара (pop-up + переключение)
    ========================================================================= */
-
 (function () {
     'use strict';
 
-    /* ===== Переключение основного изображения по миниатюре ===== */
     const mainImg = document.getElementById('mainImg');
-    const thumbs  = document.querySelectorAll('.gallery__thumb');
+    const thumbs = document.querySelectorAll('.gallery__thumb');
 
+    /* Переключение основного изображения по миниатюре */
     thumbs.forEach((thumb) => {
         thumb.addEventListener('click', () => {
             const src = thumb.dataset.src;
             if (!src || !mainImg) return;
-            // Меняем местами: основной ↔ миниатюра
             const oldMain = mainImg.src;
             mainImg.style.opacity = '0';
             setTimeout(() => {
                 mainImg.src = src;
                 mainImg.style.opacity = '1';
-                // Обновляем миниатюру
                 const img = thumb.querySelector('img');
                 if (img) img.src = oldMain;
                 thumb.dataset.src = oldMain;
@@ -27,7 +24,7 @@
         });
     });
 
-    /* ===== Счётчик количества ===== */
+    /* Счётчик количества */
     const qtyVal = document.querySelector('.info__qty-val');
     document.querySelectorAll('.info__qty-btn').forEach((btn) => {
         btn.addEventListener('click', () => {
@@ -39,7 +36,7 @@
         });
     });
 
-    /* ===== Табы (Доставка / Правила возврата) ===== */
+    /* Табы */
     const tabBtns = document.querySelectorAll('.tabs__btn');
     const tabPanes = document.querySelectorAll('.tabs__pane');
     tabBtns.forEach((btn) => {
@@ -53,9 +50,8 @@
         });
     });
 
-    /* ===== Pop-up для основного изображения (готовый JS-скрипт) ===== */
+    /* Pop-up для основного изображения */
     if (mainImg) {
-        // Создаём overlay один раз
         const overlay = document.createElement('div');
         overlay.className = 'lightbox';
         overlay.innerHTML = `
@@ -64,7 +60,7 @@
         `;
         document.body.appendChild(overlay);
 
-        const lbImg   = overlay.querySelector('.lightbox__img');
+        const lbImg = overlay.querySelector('.lightbox__img');
         const lbClose = overlay.querySelector('.lightbox__close');
 
         mainImg.style.cursor = 'zoom-in';
