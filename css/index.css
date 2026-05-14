@@ -270,7 +270,7 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
 .filter__slider-fill {
     position: absolute;
     top: 7px;
-    left: 0; right: 30%;
+    left: 0; right: 0;
     height: 2px;
     background: var(--accent);
 }
@@ -283,7 +283,7 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
     border-radius: 50%;
 }
 .filter__slider-dot--left { left: 0; }
-.filter__slider-dot--right { right: 30%; }
+.filter__slider-dot--right { right: 0; }
 
 .filter__price {
     display: grid;
@@ -547,17 +547,16 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
 .promo-coupon__notch--right { right: -8px; }
 
 /* ============ FAQ ============ */
+/* Структура по макету:
+   - Заголовок «Часто задаваемые вопросы» на всю ширину сверху
+   - Под ним 2 колонки: слева коллаж 716×606px (пропорции из SVG-макета),
+     справа список вопросов
+   Коллаж: 3 колонки (200 / 244 / 272 с gap 16), 2 ряда (390 / 200) */
 .faq {
     padding: 80px 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-}
-.faq__left {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 48px;
 }
 .faq__title {
     font-family: var(--font-head);
@@ -567,29 +566,32 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
     color: var(--text);
     letter-spacing: -0.5px;
 }
-/* Коллаж как в макете: 3 колонки × 2 ряда, 5 фотографий
-   Кол 1: маленькое (сверху) + высокое (снизу)
-   Кол 2-3: широкое сверху (растянутое на 2 кол), 2 квадратных снизу */
+.faq__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
 .faq__collage {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 12px;
+    grid-template-columns: 200fr 244fr 272fr;
+    grid-template-rows: 390fr 200fr;
+    gap: 16px;
     width: 100%;
-    max-width: 580px;
-    aspect-ratio: 1 / 0.85;
+    aspect-ratio: 716 / 606;
 }
 .faq__collage-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 20px;
+    display: block;
 }
-.faq__collage-img--1 { grid-row: 1; grid-column: 1; }            /* пионы (маленькое слева сверху) */
-.faq__collage-img--2 { grid-row: 1; grid-column: 2 / 4; }        /* тюльпаны (широкое сверху) */
-.faq__collage-img--3 { grid-row: 2; grid-column: 1; }            /* оранжевые (слева снизу) */
-.faq__collage-img--4 { grid-row: 2; grid-column: 2; }            /* гидрангея (середина снизу) */
-.faq__collage-img--5 { grid-row: 2; grid-column: 3; }            /* тюльпаны жёлтые (справа снизу) */
+.faq__collage-img--1 { grid-row: 1; grid-column: 1; }        /* пионы (верх-слева, узкая) */
+.faq__collage-img--2 { grid-row: 1; grid-column: 2 / 4; }    /* тюльпаны (широкое сверху) */
+.faq__collage-img--3 { grid-row: 2; grid-column: 1; }        /* оранжевые (низ-слева) */
+.faq__collage-img--4 { grid-row: 2; grid-column: 2; }        /* гидрангея */
+.faq__collage-img--5 { grid-row: 2; grid-column: 3; }        /* жёлтые тюльпаны */
 
 .faq__list { display: grid; gap: 16px; }
 .faq__item {
@@ -620,7 +622,9 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
 }
 .faq__item:not(.faq__item--open) .faq__body { display: none; }
 
-/* ============ ПОДВАЛ ============ */
+/* ============ ПОДВАЛ (по макету) ============
+   5 колонок: [лого] [О НАС] [ДОКУМЕНТЫ] [КЛИЕНТАМ] [Контакты]
+   Контакты выровнены по правому краю текста */
 .footer {
     background: var(--pink);
     padding: 60px 0 24px;
@@ -631,7 +635,7 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
     padding: 0 40px;
     display: grid;
     grid-template-columns: auto 1fr 1.2fr 1fr auto;
-    gap: 80px;
+    gap: 60px;
     align-items: start;
 }
 .footer__logo img { height: 60px; width: auto; }
@@ -651,7 +655,7 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
 .footer__link:hover { color: var(--accent); }
 .footer__col--contacts { text-align: right; }
 .footer__phone { font-size: 16px; color: var(--text); font-weight: 400; }
-.footer__hours { font-size: 16px; color: var(--text); margin-top: 8px; }
+.footer__hours { font-size: 16px; color: var(--text); margin-top: 4px; }
 .footer__policy {
     max-width: 1640px;
     margin: 30px auto 0;
@@ -676,8 +680,9 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
     .main { padding: 0 24px; }
     .page-title { font-size: 48px; }
     .catalog { grid-template-columns: 200px 1fr; gap: 40px; }
-    .faq { grid-template-columns: 1fr; gap: 32px; }
+    .faq { padding: 60px 0; gap: 32px; }
     .faq__title { font-size: 36px; }
+    .faq__content { gap: 40px; }
     .promo-banner { padding: 0 40px; }
     .promo-banner__title { font-size: 32px; }
     .footer__inner { grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -689,6 +694,7 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
     .catalog { grid-template-columns: 1fr; }
     .products { grid-template-columns: repeat(2, 1fr); }
     .page-title { font-size: 36px; }
+    .faq__content { grid-template-columns: 1fr; gap: 32px; }
     .promo-banner { height: auto; padding: 40px 24px; }
     .footer__inner { grid-template-columns: 1fr; }
     .footer__col--contacts { text-align: left; }
