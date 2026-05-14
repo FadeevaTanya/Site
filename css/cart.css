@@ -224,6 +224,8 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
 .select-all input[type="checkbox"]:checked,
 .cart-row__check:checked {
     background-image: url("../images/icons/check-checked.svg");
+     grid-row: 1 / span 2;
+    align-self: center;
 }
 .clear-btn {
     color: var(--text);
@@ -236,13 +238,15 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
 
 .cart-row {
     display: grid;
-    grid-template-columns: 24px 200px 1fr auto auto;
+    grid-template-columns: 24px 200px 1fr auto;
     gap: 24px;
-    align-items: center;
     padding: 32px 0;
     border-bottom: 1px solid var(--border-light);
+    grid-template-rows: auto auto;
 }
 .cart-row__photo {
+    grid-row: 1 / span 2;
+    align-self: center;
     width: 200px;
     height: 200px;
     border-radius: 16px;
@@ -254,6 +258,7 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
     object-fit: cover;
 }
 .cart-row__body {
+grid-row: 1 / span 2;
     display: flex;
     flex-direction: column;
     gap: 90px;
@@ -280,10 +285,12 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
 .cart-row__qty-btn { display: flex; align-items: center; justify-content: center; }
 .cart-row__qty-val { font-size: 16px; font-weight: 500; }
 .cart-row__actions {
-    display: flex;
-    gap: 16px;
+    display: flex; 
+    gap: 16px; 
     align-self: flex-start;
     margin-top: 12px;
+    grid-column: 4;
+    grid-row: 1;
 }
 .cart-row__act { display: flex; align-items: center; justify-content: center; }
 .cart-row__prices {
@@ -291,10 +298,11 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
     flex-direction: column;
     align-items: flex-end;
     gap: 4px;
-    margin-left: 32px;
     align-self: flex-end;
+    justify-self: end;
     margin-bottom: 12px;
-    min-width: 100px;
+    grid-column: 4;
+    grid-row: 2;
 }
 .cart-row__price {
     font-size: 24px;
